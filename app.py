@@ -6,7 +6,7 @@ from google.genai import types
 app = Flask(__name__, static_folder="static", static_url_path="")
 client = genai.Client()  # automatycznie pobiera klucz z GEMINI_API_KEY
 
-PLIK_WIEDZY = "wiedz/baza_wedkarska.md"  # upewnij się, że plik ma taką nazwę w repozytorium
+PLIK_WIEDZY = "wiedz/baza_wedkarska2.md"  # upewnij się, że plik ma taką nazwę w repozytorium
 
 SYSTEM_INSTRUCTION = (
     "Jesteś ekspertem od wędkarstwa i odpowiadasz wyłącznie po polsku. "
