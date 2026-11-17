@@ -203,6 +203,33 @@ Zimowy połów ryb spod lodu (wymagana bezpieczna grubość pokrywy lodowej: min
 6. **Ignorowanie lokalnych regulaminów:** Założenie, że w całej Polsce obowiązuje wymiar szczupaka 50 cm, podczas gdy w danym okręgu obowiązuje wymiar widełkowy (np. 50–80 cm) lub zakaz zabierania ryb z konkretnego zbiornika.
 7. **Hałasowanie nad brzegiem i rzucanie cienia na wodę:** Tupanie po pomoście, głośne rozmowy na płytkiej wodzie czy stanie na tle jasnego nieba tuż przy brzegu natychmiast płoszy klenie, jazie, pstrągi i liny.
 
+## Gatunki obce i inwazyjne (IGO) w polskich wodach
+
+### Co to jest gatunek inwazyjny (IGO)?
+**Inwazyjny Gatunek Obcy (IGO)** to gatunek rośliny lub zwierzęcia wprowadzony poza swój naturalny obszar występowania, którego obecność zagraża rodzimej przyrodzie, wypiera polskie gatunki ryb i zaburza równowagę ekosystemu (np. wyjadając ikrę i narybek rodzimych ryb lub przenosząc choroby).
+
+### Obowiązki wędkarza po złowieniu gatunku inwazyjnego (IGO)
+Zgodnie z polskim prawem (Ustawa o gatunkach obcych) oraz Regulaminem Amatorskiego Połowu Ryb (RAPR):
+* **Zakaz wypuszczania:** Złowionej ryby z listy IGO **nie wolno wypuścić z powrotem do wody** (ani do tego samego łowiska, ani do żadnego innego zbiornika).
+* **Zakaz używania jako żywca:** Zabronione jest używanie gatunków inwazyjnych jako przynęty (żywej lub martwej) oraz przewożenie ich w stanie żywym.
+* **Brak wymiaru i okresu ochronnego:** Gatunki te nie podlegają ochronie – nie mają wymiaru ochronnego, okresu ochronnego ani limitu dobowego połowu.
+* **Postępowanie po złowieniu:** Złowioną rybę należy humanitarnie uśmiercić (jeśli regulamin danego łowiska nie nakazuje inaczej).
+
+### Najpopularniejsze ryby inwazyjne (IGO) spotykane w Polsce
+
+| Gatunek ryby | Cechy rozpoznawcze | Występowanie w Polsce |
+| :--- | :--- | :--- |
+| **Sumik karłowaty** (*Ameiurus nebulosus*) | Brak łusek, 8 wąsików wokół pyska, ostre kolce w płetwach piersiowych i grzbietowej, zaokrąglona płetwa ogonowa. | Wody stojące i wolno płynące w całej Polsce (szczególnie starorzecza, glinianki, jeziora). |
+| **Trawianka** (*Perccottus glenii*) | Krępe ciało, duża głowa i szeroki pysk, ciemne ubarwienie z plamkami, płetwy brzuszne nie są zrośnięte w przyssawkę (w odróżnieniu od babek). | Coraz powszechniejsza w dorzeczu Wisły, Bugu, Narwi oraz w stawach i starorzeczach. |
+| **Czebaczek amurski** (*Pseudorasbora parva*) | Mała ryba (zwykle 5–10 cm), podłużne ciało, pysk skierowany ku górze, często ciemny pasek wzdłuż boku. | Stawy hodowlane, starorzecza, kanały i wolno płynące rzeki w całym kraju. |
+| **Babki (bycza, szczupła, łysa, marmurkowata)** | Niewielkie ryby przydenne o dużej głowie, brak linii bocznej, **płetwy brzuszne zrośnięte w charakterystyczną przyssawkę**. | Głównie Wisła, Odra, Zalew Wiślany, Zalew Szczeciński i ich dopływy. |
+| **Bass słoneczny** (*Lepomis gibbosus*) | Wysokie, bocznie spłaszczone ciało, jaskrawe ubarwienie (niebiesko-pomarańczowe paski), ciemna plamka na pokrywie skrzelowej. | Spotykany lokalnie, m.in. w wodach podgrzanych (np. okolice Konina, Dolnej Odry) i starorzeczach. |
+
+### Ważne rozróżnienie: Gatunek obcy a gatunek inwazyjny (IGO)
+Nie każda ryba pochodząca spoza Polski znajduje się na prawnej liście IGO:
+* **Gatunki obce objęte zakazem wypuszczania (IGO):** m.in. sumik karłowaty, trawianka, czebaczek amurski, babka bycza, babka szczupła, bass słoneczny (oraz raki: pręgowaty i sygnałowy).
+* **Gatunki obce, które NIE są na liście IGO:** karp, amur biały, tołpyga, pstrąg tęczowy czy karaś srebrzysty. Są one gatunkami obcymi (wprowadzonymi przez człowieka), ale nie obejmują ich ustawowe zakazy z listy IGO – w ich przypadku stosuje się zasady zapisane w regulaminie konkretnego łowiska lub okręgu PZW (np. w wielu okręgach PZW karaś srebrzysty również nie ma wymiaru i limitu, ale jego wypuszczenie nie jest złamaniem ustawy o IGO).
+* **Uwaga na pomyłki z gatunkami chronionymi:** Przed uśmierceniem małej ryby przydennej upewnij się, że nie jest to rodzimy, ściśle chroniony **głowacz białopłetwy**, **śliz** lub **kiełb**.
 ---
 
 ## 7. Często Zadawane Pytania i Odpowiedzi (FAQ)
