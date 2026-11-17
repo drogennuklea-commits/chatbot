@@ -34,6 +34,7 @@ def chat():
             model="openai/gpt-oss-20b",
             messages=[SYSTEM] + historia,
             max_tokens=2000,
+            temperature=0.3,
         )
         return jsonify({"reply": odp.choices[0].message.content})
     except Exception as e:
