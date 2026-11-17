@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    #log { border: 1px solid #ccc; height: 400px; overflow-y: auto; padding: 10px; }
+    .user { text-align: right; color: #06c; margin: 6px 0; }
+    .bot { margin: 6px 0; }
+    #row { display: flex; gap: 6px; margin-top: 10px; }
+    #msg { flex: 1; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Chatbot</h2>
+  <div id="log"></div>
+  <div id="row">
+    <input id="msg" placeholder="Napisz wiadomość...">
+    <button id="send">Wyślij</button>
+  </div>
+
+<script>
+const historia = [];
+const log = document.getElementById("log");
+const msg = document.getElementById("msg");
+
+function dodaj(klasa, tekst) {
+  const d = document.createElement("div");
+  d.className = klasa;
+  d.textContent = tekst;
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function wyslij() {
+  const tekst = msg.value.trim();
+  if (!tekst) return;
+  msg.value = "";
+  dodaj("user", tekst);
+  historia.push({ role: "user", content: tekst });
+  try {
+    const r = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: historia }),
+    });
+    const data = await r.json();
+    historia.push({ role: "assistant", content: data.reply });
+    dodaj("bot", data.reply);
+  } catch (e) {
+    dodaj("bot", "Błąd połączenia z serwerem.");
+  }
+}
+
+document.getElementById("send").onclick = wyslij;
+msg.addEventListener("keydown", e => { if (e.key === "Enter") wyslij(); });
+</script>
+</body>
+</html>
