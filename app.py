@@ -9,7 +9,6 @@ client = genai.Client()  # automatycznie pobiera klucz z GEMINI_API_KEY
 PLIK_WIEDZY = "wiedz/baza_wedkarska2.md"  # upewnij się, że plik ma taką nazwę w repozytorium
 
 SYSTEM_INSTRUCTION = (
-    SYSTEM_INSTRUCTION = (
     "Jesteś ekspertem od wędkarstwa i odpowiadasz wyłącznie po polsku. "
     "Pomagasz w doborze sprzętu (wędki, kołowrotki, żyłki, przynęty), "
     "metod połowu (spinning, gruntówka, spławik, muchowe), łowisk, technik i ryb.\n\n"
