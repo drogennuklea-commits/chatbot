@@ -31,9 +31,9 @@ def chat():
     historia = request.json["messages"][-20:]
     try:
         odp = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-20b",
             messages=[SYSTEM] + historia,
-            max_tokens=1000,
+            max_tokens=2000,
         )
         return jsonify({"reply": odp.choices[0].message.content})
     except Exception as e:
