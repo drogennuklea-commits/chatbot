@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, request, jsonify
 from google import genai
 from google.genai import types
@@ -6,7 +7,7 @@ from google.genai import types
 app = Flask(__name__, static_folder="static", static_url_path="")
 client = genai.Client()  # automatycznie pobiera klucz z GEMINI_API_KEY
 
-PLIK_WIEDZY = "wiedz/baza_wedkarska2.md"  # upewnij się, że plik ma taką nazwę w repozytorium
+PLIK_WIEDZY = "wiedz/baza_wedkarska2.md"  # upewnij się, że folder i plik mają dokładnie taką nazwę w repozytorium
 
 SYSTEM_INSTRUCTION = (
     "Jesteś ekspertem od wędkarstwa i odpowiadasz wyłącznie po polsku. "
@@ -39,6 +40,7 @@ SYSTEM_INSTRUCTION = (
     "Przy przepisach (wymiary i okresy ochronne, karta wędkarska) przypomnij, "
     "że trzeba sprawdzić regulamin łowiska lub przepisy lokalne."
 )
+
 # Wgranie pliku wiedzy przy starcie serwera (zamiast przy każdym zapytaniu)
 wgrany_plik = None
 if os.path.exists(PLIK_WIEDZY):
@@ -57,10 +59,8 @@ def index():
 @app.route("/chat", methods=["POST"])
 def chat():
     historia = request.json.get("messages", [])[-20:]
-    
-    # Konwersja historii z formatu frontendu (user/assistant) na format Gemini (user/model)
     zawartosc_dla_gemini = []
-    
+
     # Jeśli plik wiedzy został wgrany, dołączamy go na początku kontekstu rozmowy
     if wgrany_plik:
         zawartosc_dla_gemini.append(
@@ -83,6 +83,14 @@ def chat():
         )
 
     for msg in historia:
+        # Pomijamy zapisane komunikaty o błędach, żeby bot nie myślał, że to jego odpowiedź
+        if (
+            "Nie udało się uzyskać odpowiedzi" in msg["content"]
+            or "Błąd po stronie serwera" in msg["content"]
+            or "Serwery AI są chwilowo przeciążone" in msg["content"]
+        ):
+            continue
+
         rola = "model" if msg["role"] == "assistant" else "user"
         zawartosc_dla_gemini.append(
             types.Content(
@@ -91,20 +99,31 @@ def chat():
             )
         )
 
-    try:
-        odp = client.models.generate_content(
-            model="gemini-3.5-flash-lite",
-            contents=zawartosc_dla_gemini,
-            config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_INSTRUCTION,
-                max_output_tokens=2000,
-                temperature=0.3,
-            ),
-        )
-        return jsonify({"reply": odp.text})
-    except Exception as e:
-        print("BŁĄD GEMINI:", repr(e), flush=True)
-        return jsonify({"reply": "Błąd po stronie serwera, spróbuj za chwilę."}), 500
+    # Automatyczne ponowienie i przełączenie na model zapasowy przy błędzie 503 / 429
+    modele_do_uzycia = [
+        "gemini-3.5-flash-lite",
+        "gemini-3.8-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+    ]
+
+    for i, model_name in enumerate(modele_do_uzycia):
+        try:
+            odp = client.models.generate_content(
+                model=model_name,
+                contents=zawartosc_dla_gemini,
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM_INSTRUCTION,
+                    max_output_tokens=2000,
+                    temperature=0.3,
+                ),
+            )
+            return jsonify({"reply": odp.text})
+        except Exception as e:
+            print(f"Próba {i+1} ({model_name}) nieudana:", repr(e), flush=True)
+            time.sleep(1.5)
+
+    return jsonify({"reply": "Serwery AI są chwilowo przeciążone. Spróbuj ponownie za kilka sekund."}), 500
 
 
 if __name__ == "__main__":
