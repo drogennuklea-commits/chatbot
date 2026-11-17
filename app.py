@@ -95,11 +95,11 @@ def chat():
             print(f"BŁĄD GEMINI (próba {proba+1}):", repr(e), flush=True)
             time.sleep(1.0)
 
-    # 2. Awaryjne przełączenie na Groq, jeśli Gemini zwróciło 503
+  # 2. Awaryjne przełączenie na Groq, jeśli Gemini zwróciło 503
     if groq_client:
         try:
             odp_groq = groq_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="openai/gpt-oss-20b",
                 messages=[{"role": "system", "content": SYSTEM_INSTRUCTION}] + czysta_historia,
                 max_tokens=2000,
                 temperature=0.3,
