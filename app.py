@@ -36,9 +36,9 @@ def chat():
             max_tokens=1000,
         )
         return jsonify({"reply": odp.choices[0].message.content})
-        except Exception as e:
-            print("BŁĄD GROQ:", repr(e), flush=True)
-            return jsonify({"reply": "Błąd po stronie serwera, spróbuj za chwilę."}), 500
+    except Exception as e:
+        print("BŁĄD GROQ:", repr(e), flush=True)
+        return jsonify({"reply": "Błąd po stronie serwera, spróbuj za chwilę."}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
